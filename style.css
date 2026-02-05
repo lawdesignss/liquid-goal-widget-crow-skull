@@ -1,18 +1,36 @@
 body {
   margin: 0;
-  background: lime; /* DEBUG */
+  background: transparent;
+  overflow: hidden;
 }
 
 #goal-container {
   width: 300px;
   height: 600px;
-  background: red; /* DEBUG */
   position: relative;
   overflow: hidden;
 }
 
+/* IMPORTANTE: que el vídeo siempre esté “dentro” */
 #liquid {
   position: absolute;
+  left: 0;
   bottom: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* Color opcional */
+  filter: hue-rotate(220deg) saturate(1.2);
+
+  /* NO lo empujes fuera por defecto */
+  transform: translateY(0);
+}
+
+#frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
