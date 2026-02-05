@@ -1,4 +1,4 @@
-/* ===== Liquid Goal Widget - FINAL CSS ===== */
+/* ===== Liquid Goal Widget - CSS COMPLETO (con debug opcional) ===== */
 
 body {
   margin: 0;
@@ -6,14 +6,19 @@ body {
   overflow: hidden;
 }
 
-/* Tamaño del widget + FORMA (mask.png) */
+/* Contenedor: tamaño + recorte + máscara (forma) */
 #goal-container {
   width: 300px;
   height: 600px;
   position: relative;
   overflow: hidden;
 
-  /* Máscara (forma interior del recipiente) */
+  /* DEBUG (opcional): descomenta para ver el área del widget */
+  /* background: rgba(255, 0, 0, 0.15); */
+
+  /* ===== MÁSCARA (FORMA) =====
+     mask.png: BLANCO = visible, TRANSPARENTE = oculto
+     Si se te ve todo transparente, comenta estas líneas para probar */
   -webkit-mask-image: url("mask.png");
   -webkit-mask-size: cover;
   -webkit-mask-repeat: no-repeat;
@@ -33,11 +38,15 @@ body {
   width: 100%;
   height: auto;
 
-  /* Color del líquido (cámbialo aquí) */
+  /* Color del líquido (editable) */
   filter: hue-rotate(220deg) saturate(1.2);
+
+  /* Suaviza movimiento en algunos navegadores */
+  transform: translateY(600px); /* arranca “vacío” hasta que llegue el primer evento */
+  will-change: transform;
 }
 
-/* Marco visible (frame.png) por encima del líquido */
+/* Marco visible por encima del líquido (opcional pero recomendado) */
 #frame {
   position: absolute;
   top: 0;
